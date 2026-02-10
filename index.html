@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Para ti 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      font-family: "Comic Sans MS", "Arial Rounded MT Bold", system-ui;
+      background: linear-gradient(180deg,#fff,#ffe6ef);
+      overflow:hidden;
+    }
+
+    /* corazones flotando */
+    .heart{
+      position:absolute;
+      width:14px;
+      height:14px;
+      background:#ff4d6d;
+      transform:rotate(45deg);
+      animation: float 6s linear infinite;
+      opacity:.6;
+    }
+    .heart::before,
+    .heart::after{
+      content:"";
+      position:absolute;
+      width:14px;
+      height:14px;
+      background:#ff4d6d;
+      border-radius:50%;
+    }
+    .heart::before{ left:-7px; }
+    .heart::after{ top:-7px; }
+
+    @keyframes float{
+      from{ transform:translateY(40px) rotate(45deg); }
+      to{ transform:translateY(-120vh) rotate(45deg); }
+    }
+
+    .card{
+      background:white;
+      border-radius:24px;
+      padding:30px 26px 36px;
+      width:min(92vw,420px);
+      text-align:center;
+      box-shadow:0 20px 40px rgba(0,0,0,.15);
+      position:relative;
+      z-index:2;
+    }
+
+    h1{
+      margin:0;
+      font-size:32px;
+    }
+
+    .msg{
+      margin:18px 0;
+      font-size:18px;
+      color:#444;
+      line-height:1.5;
+    }
+
+    .from{
+      margin-top:10px;
+      font-weight:bold;
+      color:#777;
+    }
+
+    .snoopy{
+      width:240px;
+      max-width:100%;
+      margin:14px auto;
+      animation: bounce 3s ease-in-out infinite;
+    }
+
+    @keyframes bounce{
+      0%,100%{ transform:translateY(0); }
+      50%{ transform:translateY(-10px); }
+    }
+
+    button{
+      margin-top:16px;
+      padding:12px 18px;
+      border:none;
+      border-radius:16px;
+      background:#ff4d6d;
+      color:white;
+      font-size:16px;
+      font-weight:bold;
+      cursor:pointer;
+      box-shadow:0 10px 20px rgba(0,0,0,.15);
+    }
+
+    button:hover{
+      transform:translateY(-2px);
+    }
+
+    @media (max-width: 480px){
+
+  h1{
+    font-size:26px;
+  }
+
+  .msg{
+    font-size:16px;
+  }
+
+  .snoopy{
+    width:200px;
+  }
+
+  button{
+    width:100%;
+  }
+}
+
+  </style>
+</head>
+
+<body>
+
+  <!-- corazones -->
+  <script>
+    for(let i=0;i<25;i++){
+      const h=document.createElement("div");
+      h.className="heart";
+      h.style.left=Math.random()*100+"vw";
+      h.style.animationDuration=(4+Math.random()*4)+"s";
+      document.body.appendChild(h);
+    }
+  </script>
+
+  <div class="card">
+    <h1>Para ti, mi amor 💕</h1>
+
+    <img src="/img/snoopy.gif" class="snoopy" id="snoopy">
+
+    <p class="msg" id="msg">
+      “Desde que llegaste a mi vida,<br>
+      incluso Snoopy cree en el amor.” 🐶❤️
+    </p>
+
+    <div class="from">
+      — Con amor, Jhos
+    </div>
+
+    <button onclick="change()">Sorpresa 💖</button>
+  </div>
+
+  <script>
+    const imgs = [
+      "img/tulu.png",
+      "img/julu.png"
+    ];
+
+    const texts = [
+      "“Todo es mejor contigo… incluso los lunes.” 💞",
+      "“Si Snoopy sonríe, es porque tú existes.” 🐾❤️",
+      "“Te elijo hoy, mañana y siempre.” 💖"
+    ];
+
+    function change(){
+      const img=document.getElementById("snoopy");
+      const msg=document.getElementById("msg");
+
+      img.src = imgs[Math.floor(Math.random()*imgs.length)];
+      msg.innerHTML = texts[Math.floor(Math.random()*texts.length)];
+    }
+  </script>
+
+</body>
+</html>
